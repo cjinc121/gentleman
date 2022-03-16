@@ -1,36 +1,37 @@
 import "./navbar.css";
+import {Link} from "react-router-dom";
 import {BsHeartFill,BsFillCartFill} from 'react-icons/bs';
 import {RiLoginCircleFill} from "react-icons/ri";
 const Navbar=()=>{
 return <header class="navbar">
 <div class="left-nav">
-  <a class="p-1 fs-15" href="../../index.html">
+  <Link class="p-1 fs-15" to="/">
     <span class="brand fs-15">
       <span class="brand-name"><s>GENTLE</s>MAN</span>
     </span>
-  </a>
+  </Link>
 </div>
 <div class="right-nav">
   <ul class="link">
     <li>
-      <a href="/screens/wishlist/wishlist.html"
+      <Link to="/"
         ><div class="badge">
           <BsHeartFill className="nav-icon"/>
           <div class="badge-no-right">9</div>
         </div>
-      </a>
+      </Link>
     </li>
     <li>
-      <a href="/screens/cart/cart.html"
+      <Link to="/"
         ><div class="badge">
          <BsFillCartFill className="nav-icon"/>
           <div class="badge-no-right">9</div>
         </div>
-      </a>
+      </Link>
     </li>
     <li>
-      <a href="../authentication/login.html"
-        ><RiLoginCircleFill className="nav-icon"/></a>
+      <Link to="/"
+        ><RiLoginCircleFill className="nav-icon"/></Link>
     </li>
   </ul>
 </div>
