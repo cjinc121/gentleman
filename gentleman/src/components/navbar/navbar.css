@@ -1,0 +1,21 @@
+@import url("https://fluid-ui-component.vercel.app/docs/docs.css");
+
+.brand-name {
+  letter-spacing: 0.2rem;
+}
+.right-nav .link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+.badge {
+  margin: 10px;
+}
+.badge-no-right {
+  background-color: var(--warn-color);
+  left: 1.5rem;
+}
+.nav-icon {
+  font-size: xx-large;
+}
