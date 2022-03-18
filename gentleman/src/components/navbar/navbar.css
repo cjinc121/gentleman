@@ -13,8 +13,9 @@
   margin: 10px;
 }
 .badge-no-right {
-  background-color: var(--error-color);
+  background-color: var(--warn-color);
   left: 1.5rem;
+  font-size: 1rem;
 }
 .nav-icon {
   font-size: xx-large;
