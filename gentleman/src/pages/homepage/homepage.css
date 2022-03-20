@@ -1,0 +1,114 @@
+@import url("https://fluid-ui-component.vercel.app/docs/docs.css");
+.category-container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding: 1rem 0;
+  width: 100%;
+}
+.category-card:hover {
+  border-bottom: 2px solid black;
+  transition: 0.1s all ease-in-out;
+}
+.banner-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+  width: 98%;
+  border: 2px solid black;
+  margin: 1%;
+}
+.left-image,
+.right-image {
+  width: 27%;
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+}
+.middle-text {
+  width: 46%;
+  letter-spacing: 2px;
+  font-weight: bold;
+  font-size: 3rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+.featured-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem;
+}
+.card-container-vertical {
+  width: 20rem;
+  border-radius: 0%;
+}
+.card-container-vertical img {
+  width: 35%;
+}
+.card-vertical-title {
+  justify-content: space-evenly;
+}
+.button {
+  padding: 0.5rem 1rem;
+  border-radius: 0;
+  margin: 0 0.5rem;
+}
+.black-button {
+  background-color: var(--black-color);
+  color: var(--white-color);
+}
+.outline-button.black-button {
+  background-color: var(--white-color);
+  color: var(--black-color);
+}
+.category-card {
+  display: flex;
+  flex-direction: column;
+}
+.category-card .bottom-name {
+  align-self: center;
+  font-size: 1.2rem;
+  padding: 1rem;
+  letter-spacing: 1px;
+}
+.heading {
+  letter-spacing: 2px;
+  font-weight: normal;
+  font-size: 2rem;
+  padding: 1rem;
+}
+
+@media screen and (max-width: 500px) {
+  .category-card {
+    width: 40%;
+  }
+  .bottom-column {
+    width: 25%;
+  }
+  .banner-container {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .left-image,
+  .right-image {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    align-items: flex-start;
+  }
+  .middle-text {
+    align-self: flex-start;
+    width: 100%;
+    gap: 1rem;
+  }
+}
