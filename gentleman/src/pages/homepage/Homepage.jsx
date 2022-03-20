@@ -3,16 +3,14 @@ import axios from "axios";
 import {Link} from "react-router-dom";
 import { useEffect, useState } from "react";
 const Homepage=()=>{
-  const [category,setCategory]=useState([]);
-  const [featured,setFeatured]=useState([]);
+  const [homeData,setHomeData]=useState({category:[],featured:[]});
   //api call
  useEffect(()=>{
 (async ()=>{
   try{
     const categoryResponse=await axios.get('/api/categories');
     const productResponse=await axios.get('/api/products');
-    setCategory(categoryResponse.data.categories);
-    setFeatured( productResponse.data.products);
+    setHomeData({category:categoryResponse.data.categories,featured:productResponse.data.products});
   }
   catch(err){
     console.log(err);
@@ -46,7 +44,7 @@ const Homepage=()=>{
 
 <div className="category-container">
 {
-      category.map((item)=>{
+      homeData.category.map((item)=>{
         return <div className="category-card">
         <div className="top-image">
           <Link to="/products">
@@ -63,7 +61,7 @@ const Homepage=()=>{
 
 <div className="featured-container">
   {
-    featured.filter((item)=>item.featuredProduct).map((item)=>{
+    homeData.featured.filter((item)=>item.featuredProduct).map((item)=>{
       return <div className="card-container-vertical">
       <img src={item.photoUrl}/>
       <div className="card-vertical-title">
