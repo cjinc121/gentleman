@@ -1,1 +1,17 @@
 @import url("/node_modules/mockman-js/dist/style.css");
+.page-header {
+  background-color: var(--white-color);
+  height: 10rem;
+  letter-spacing: 2px;
+  font-size: 2rem;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.heading {
+  letter-spacing: 2px;
+  font-weight: normal;
+  font-size: 2rem;
+  padding: 1rem;
+}
