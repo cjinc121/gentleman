@@ -1,22 +1,12 @@
 import "./homepage.css";
-import axios from "axios";
 import {Link} from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useCategoryContext } from "../../context/category-context";
+import { useProductContext } from "../../context/product-context";
 const Homepage=()=>{
-  const [homeData,setHomeData]=useState({category:[],featured:[]});
-  //api call
- useEffect(()=>{
-(async ()=>{
-  try{
-    const categoryResponse=await axios.get('/api/categories');
-    const productResponse=await axios.get('/api/products');
-    setHomeData({category:categoryResponse.data.categories,featured:productResponse.data.products});
-  }
-  catch(err){
-    console.log(err);
-  }
-})()
- },[])
+  const {category}=useCategoryContext();
+  const {productState}=useProductContext();
+ 
   return <div> 
    {/* banner */}
    <div className="banner-container">
@@ -27,7 +17,7 @@ const Homepage=()=>{
   </div>
   <div className="middle-text">
     NEW SUMMER SNEAKERS COLLECTION
-    <Link to="/"
+    <Link to="/products"
       ><button className="button containedbutton black-button">
         Explore Now
       </button></Link
@@ -44,7 +34,7 @@ const Homepage=()=>{
 
 <div className="category-container">
 {
-      homeData.category.map((item)=>{
+      category.map((item)=>{
         return <div className="category-card">
         <div className="top-image">
           <Link to="/products">
@@ -61,7 +51,7 @@ const Homepage=()=>{
 
 <div className="featured-container">
   {
-    homeData.featured.filter((item)=>item.featuredProduct).map((item)=>{
+    productState.product.filter((item)=>item.featuredProduct).map((item)=>{
       return <div className="card-container-vertical">
       <img src={item.photoUrl}/>
       <div className="card-vertical-title">

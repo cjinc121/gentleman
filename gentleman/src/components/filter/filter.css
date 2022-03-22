@@ -1,0 +1,59 @@
+@import url("https://fluid-ui-component.vercel.app/docs/docs.css");
+
+.price-range {
+  display: flex;
+  justify-content: space-between;
+}
+.price-range-slider {
+  display: block;
+}
+.text-end {
+  text-align: end;
+}
+.sidebar {
+  background-color: var(--white-color);
+  width: 20%;
+  position: relative;
+}
+.main-heading {
+  margin: 2px;
+  width: 80%;
+}
+
+.sidebar-heading {
+  font-weight: bold;
+  letter-spacing: 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.radio input,
+.checkbox input {
+  margin-right: 4px;
+}
+.bottom-responsive-button {
+  display: none;
+}
+.price {
+  width: 80%;
+}
+@media only screen and (max-width: 500px) {
+  .sidebar {
+    display: none;
+  }
+  .bottom-responsive-button {
+    justify-content: center;
+    letter-spacing: 2px;
+    display: flex;
+    font-size: 2rem;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    border-top: 2px solid black;
+    margin-top: 1rem;
+    padding: 1rem 0;
+    cursor: pointer;
+    background-color: var(--light-color);
+  }
+}
