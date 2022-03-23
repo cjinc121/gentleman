@@ -1,4 +1,6 @@
 @import url("/node_modules/mockman-js/dist/style.css");
+@import url("https://fluid-ui-component.vercel.app/docs/docs.css");
+
 .page-header {
   background-color: var(--white-color);
   height: 10rem;
