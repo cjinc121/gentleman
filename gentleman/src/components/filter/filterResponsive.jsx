@@ -1,12 +1,11 @@
-import "./filter.css";
-import {FaFilter} from "react-icons/fa";
+import "./filterResponsive.css";
 import { useCategoryContext } from "../../context/category-context";
 import { useProductContext } from "../../context/product-context";
-const Filter=()=>{
+const FilterResponsive=()=>{
   const {category}=useCategoryContext();
 const {productState,productDispatch}=useProductContext();
 const ratingData=["4 Star & above","3 Star & above","2 Star & above","1 Star & above"]
-return <div className="sidebar p-1 m-1">
+return <div className="sidebar-responsive p-1 ">
   
 <div className="sidebar-heading main-heading">
   Filters
@@ -58,15 +57,13 @@ return <div className="sidebar p-1 m-1">
               name="checkbox"
               type="checkbox"
               checked={productState.category.find((element)=>element===item.categoryName)===undefined?false:true}
-
             />{item.categoryName}</label
           >
         </div>
   }
   )
 }
-          
-        
+
 {/* filtering */}
 <div className="sidebar-heading">Availability </div>
 <div className="checkbox sidebar-item">
@@ -132,4 +129,4 @@ onClick={()=>productDispatch({type:"RATING",payload:4-index})}/>{item}</label>
 </div>
 </div>
 }
-export {Filter};
+export {FilterResponsive};

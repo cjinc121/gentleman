@@ -1,6 +1,5 @@
 import "./homepage.css";
 import {Link} from "react-router-dom";
-import { useEffect, useState } from "react";
 import { useCategoryContext } from "../../context/category-context";
 import { useProductContext } from "../../context/product-context";
 const Homepage=()=>{
@@ -56,9 +55,9 @@ const Homepage=()=>{
       <img src={item.photoUrl}/>
       <div className="card-vertical-title">
         <h2 className="main-title">{item.title}</h2>
-        <p className="desc">{item.categoryName}</p>
-        <p className="card-price">${item.discountPrice} <s>${item.originalPrice}</s></p>
-        <p className="discount">{(item.originalPrice-item.discountPrice)*100/item.originalPrice}%</p>
+        <p className="desc">{item.description}</p>
+        <p className="card-price">${item.discountPrice}&nbsp;&nbsp; <s>${item.originalPrice}</s></p>
+        <p className="discount">{Math.round((item.originalPrice-item.discountPrice)*100/item.originalPrice)}%OFF</p>
         <Link to="/products"> <button className="button contained-button black-button">Buy Now</button></Link>
       </div>
     </div>
