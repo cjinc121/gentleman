@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import { Homepage } from "./pages/homepage/Homepage.jsx";
 import { Product } from "./pages/product/Product.jsx";
 import { Cart } from "./pages/cartpage/cart";
+import { Wishlist } from "./pages/wishlistpage/wishlist";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/products" element={<Product />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/mockman" element={<Mockman />} />
       </Routes>
     </div>

@@ -2,10 +2,11 @@ import "./homepage.css";
 import {Link} from "react-router-dom";
 import { useCategoryContext } from "../../context/category-context";
 import { useProductContext } from "../../context/product-context";
+import { useUserContext } from "../../context/user-context";
 const Homepage=()=>{
   const {category}=useCategoryContext();
   const {productState}=useProductContext();
- 
+ const {userState,userDispatch}=useUserContext();
   return <div> 
    {/* banner */}
    <div className="banner-container">
@@ -51,6 +52,10 @@ const Homepage=()=>{
 <div className="featured-container">
   {
     productState.product.filter((item)=>item.featuredProduct).map((item)=>{
+     let b="";
+      userState.wishlist.map((wishItem)=>{
+        if(wishItem.id===item.id)b="true";
+      });
       return <div className="card-container-vertical">
       <img src={item.photoUrl}/>
       <div className="card-vertical-title">
@@ -58,7 +63,9 @@ const Homepage=()=>{
         <p className="desc">{item.description}</p>
         <p className="card-price">${item.discountPrice}&nbsp;&nbsp; <s>${item.originalPrice}</s></p>
         <p className="discount">{Math.round((item.originalPrice-item.discountPrice)*100/item.originalPrice)}%OFF</p>
-        <Link to="/products"> <button className="button contained-button black-button">Buy Now</button></Link>
+        {
+  b? <button className="button outline-button secondary-button"><Link to="/wishlist">Go to Wishlist</Link></button>: <button className="button contained-button black-button" onClick={()=>userDispatch({type:"ADD_TO_WISHLIST",payload:item})}>Add to Wishlist</button>
+}
       </div>
     </div>
     })

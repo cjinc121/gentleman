@@ -5,12 +5,24 @@ const userReducer = (state, action) => {
         ...state,
         cart: [...state.cart, { product: action.payload, quantity: 1 }],
       };
+    case "ADD_TO_WISHLIST":
+      if (
+        state.wishlist.find((item) => item.id === action.payload.id) ===
+        undefined
+      )
+        return { ...state, wishlist: [...state.wishlist, action.payload] };
+      else return { ...state };
     case "REMOVE_FROM_CART":
       return {
         ...state,
         cart: state.cart.filter(
           (item) => item.product.id !== action.payload.product.id
         ),
+      };
+    case "REMOVE_FROM_WISHLIST":
+      return {
+        ...state,
+        wishlist: state.wishlist.filter((item) => item.id != action.payload.id),
       };
 
     case "INCREASE_QUANTITY":
@@ -31,6 +43,7 @@ const userReducer = (state, action) => {
             : item;
         }),
       };
+
     default:
       return { ...state };
   }

@@ -2,7 +2,7 @@ import { useUserContext } from "../../context/user-context";
 import "./cart.css";
 import {AiFillMinusCircle,AiFillPlusCircle} from "react-icons/ai";
 import {MdCancel} from "react-icons/md";
-import { users } from "../../backend/db/users";
+import {BsFillCartXFill} from "react-icons/bs";
 const Cart=()=>{
   const {userState,userDispatch }=useUserContext();
   const totalQuantity=userState.cart.reduce((acc,curr)=>{
@@ -17,12 +17,17 @@ const Cart=()=>{
    acc=acc+(curr.product.originalPrice-curr.product.discountPrice)*curr.quantity;
    return acc
  },0)
-  return <div> <div className="page-header">Your Cart({userState.cart.length})</div>
-  <div className="cart-container">
-
-<div className="cart-container-card">
+  return <div> 
+    <div className="page-header">Your Cart({userState.cart.length})</div>
+    {userState.cart.length===0&&<div className="page-header">Empty<BsFillCartXFill/></div>}
+   {userState.cart.length!==0 &&<div><div className="cart-container">
+    <div className="cart-container-card">
   {
     userState.cart.map((item)=>{
+      let b="";
+      userState.wishlist.map((wishItem)=>{
+        if(wishItem.id===item.product.id)b="true";
+      });
       return <div className="card-container-vertical">
       <img className="card-image" src={item.product.photoUrl} />
       <div className="card-vertical-title">
@@ -44,16 +49,18 @@ const Cart=()=>{
         <p className="title card-price">
          Rs. {item.product.discountPrice} <s>Rs.{item.product.originalPrice}</s> <span className="discount">({Math.round((item.product.originalPrice-item.product.discountPrice)*100/item.product.originalPrice)}% Off)</span>
         </p>
-        <button className="button contained-button black-button">
-          ADD TO WISHLIST
-        </button>
+        
+   <button className="button outline-button secondary-button"onClick={()=>{userDispatch({type:"ADD_TO_WISHLIST",payload:item.product})
+  userDispatch({type:"REMOVE_FROM_CART",payload:item})}}>Move to Wishlist</button>
+
+      
       </div>
     </div>
     })
-  }
-      
+  }  
      </div>
-    <div className="bill-cart">
+
+     <div className="bill-cart">
       <div className="bill-cart-card">
         <div className="bill-cart-row bold-row">
           <h3>PRICE DETAILS</h3>
@@ -70,6 +77,10 @@ const Cart=()=>{
         </button>
       </div>
     </div>
-  </div></div>
+   </div>
+    </div>
+    }
+  
+  </div>
 }
 export {Cart};
