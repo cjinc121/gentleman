@@ -16,10 +16,10 @@ return <header className="navbar">
 <div className="right-nav">
   <ul className="link">
     <li>
-      <Link to="/"
+      <Link to="/wishlist"
         ><div className="badge">
           <BsHeartFill className="nav-icon"/>
-          <div className="badge-no-right">9</div>
+          <div className="badge-no-right">{userState.wishlist.length}</div>
         </div>
       </Link>
     </li>

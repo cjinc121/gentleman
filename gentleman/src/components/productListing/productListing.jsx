@@ -9,9 +9,12 @@ const ProductListing=()=>{
 return <div className="product-content">
 {
 filterData.map((item)=>{
-  let a = "";
+  let a = "";let b="";
         userState.cart.map((cartItem) => {
           if (cartItem.product.id === item.id) a = "true";
+        });
+        userState.wishlist.map((wishItem)=>{
+          if(wishItem.id===item.id)b="true";
         });
   return  <div className="card-container-portrait">
     <div className="image-container"><img src={item.photoUrl} alt="card-image" />
@@ -20,7 +23,10 @@ filterData.map((item)=>{
 {item.rating}<AiOutlineStar/>
 </div>
     <div className="tag-image-right ">
-      <button className="floating-button"><BsHeartFill className="product-card-icon"/></button>
+{
+  b?      <button className="floating-button"><BsHeartFill className="product-card-icon"/></button>
+  :      <button className="floating-button"onClick={()=>userDispatch({type:"ADD_TO_WISHLIST",payload:item})}><BsHeartFill className="product-card-icon"/></button>
+}
       </div>
       </div>
   <div className="card-title">
@@ -32,8 +38,10 @@ filterData.map((item)=>{
     a?<button className="button outline-button secondary-button"><Link to="/cart">Go To Cart</Link></button>:  <button className="button contained-button black-button" onClick={()=>userDispatch({type:"ADD_TO_CART",payload:item})}>Add to Cart</button>
 
   }
-  <button className="button outline-button secondary-button">Add to Wishlist</button>
-      </div>
+{
+  b? <button className="button outline-button secondary-button"><Link to="/wishlist">Go to Wishlist</Link></button>: <button className="button outline-button secondary-button"onClick={()=>userDispatch({type:"ADD_TO_WISHLIST",payload:item})}>Add to Wishlist</button>
+}
+  </div>
 })
 }
 </div>
