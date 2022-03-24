@@ -2,7 +2,9 @@ import "./navbar.css";
 import {Link} from "react-router-dom";
 import {BsHeartFill,BsFillCartFill} from 'react-icons/bs';
 import {RiLoginCircleFill} from "react-icons/ri";
+import { useUserContext } from "../../context/user-context";
 const Navbar=()=>{
+  const {userState}=useUserContext();
 return <header className="navbar">
 <div className="left-nav">
   <Link className="p-1 fs-15" to="/">
@@ -22,10 +24,10 @@ return <header className="navbar">
       </Link>
     </li>
     <li>
-      <Link to="/"
+      <Link to="/cart"
         ><div className="badge">
          <BsFillCartFill className="nav-icon"/>
-          <div className="badge-no-right">9</div>
+          <div className="badge-no-right">{userState.cart.length}</div>
         </div>
       </Link>
     </li>
