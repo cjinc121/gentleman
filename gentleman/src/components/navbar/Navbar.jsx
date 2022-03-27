@@ -32,7 +32,7 @@ return <header className="navbar">
       </Link>
     </li>
     <li>
-      <Link to="/"
+      <Link to="/login"
         ><RiLoginCircleFill className="nav-icon"/></Link>
     </li>
   </ul>

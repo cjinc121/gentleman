@@ -6,7 +6,8 @@ import { Homepage } from "./pages/homepage/Homepage.jsx";
 import { Product } from "./pages/product/Product.jsx";
 import { Cart } from "./pages/cartpage/cart";
 import { Wishlist } from "./pages/wishlistpage/wishlist";
-
+import { LoginPage } from "./pages/authorization/loginpage.jsx";
+import { SignupPage } from "./pages/authorization/signuppage";
 function App() {
   return (
     <div className="App">
@@ -16,6 +17,8 @@ function App() {
         <Route path="/products" element={<Product />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
         <Route path="/mockman" element={<Mockman />} />
       </Routes>
     </div>
