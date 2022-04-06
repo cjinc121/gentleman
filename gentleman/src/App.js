@@ -6,8 +6,8 @@ import { Homepage } from "./pages/homepage/Homepage.jsx";
 import { Product } from "./pages/product/Product.jsx";
 import { Cart } from "./pages/cartpage/cart";
 import { Wishlist } from "./pages/wishlistpage/wishlist";
-import { LoginPage } from "./pages/authorization/loginpage.jsx";
-import { SignupPage } from "./pages/authorization/signuppage";
+import { LoginPage } from "./pages/authentication/loginpage.jsx";
+import { SignupPage } from "./pages/authentication/signuppage";
 function App() {
   return (
     <div className="App">
