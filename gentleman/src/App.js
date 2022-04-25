@@ -6,20 +6,27 @@ import { Homepage } from "./pages/homepage/Homepage.jsx";
 import { Product } from "./pages/product/Product.jsx";
 import { Cart } from "./pages/cartpage/cart";
 import { Wishlist } from "./pages/wishlistpage/wishlist";
-import { LoginPage } from "./pages/authentication/loginpage.jsx";
-import { SignupPage } from "./pages/authentication/signuppage";
+import { Login } from "./pages/authentication/loginpage.jsx";
+import { SignUp } from "./pages/authentication/signuppage";
+import { PrivateRoute } from "./Routes/PrivateRoute";
 function App() {
   return (
     <div className="App">
       <Navbar />
       <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/mockman" element={<Mockman />} />
         <Route path="/" element={<Homepage />} />
         <Route path="/products" element={<Product />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/wishlist" element={<Wishlist />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/mockman" element={<Mockman />} />
+        <Route
+          path="/cart"
+          element={<PrivateRoute navigateTo={<Cart />}></PrivateRoute>}
+        />
+        <Route
+          path="/wishlist"
+          element={<PrivateRoute navigateTo={<Wishlist />}></PrivateRoute>}
+        />
       </Routes>
     </div>
   );

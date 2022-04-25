@@ -1,5 +1,4 @@
 const filterDataByRange = ({ range, product }) => {
-  console.log("range", range, product);
   const returnData = product.filter((item) => item.discountPrice <= range);
   return returnData;
 };
@@ -13,20 +12,16 @@ const filterDataByCategory = ({ category }, productList) => {
   return productList;
 };
 const filterDataByinstock = ({ instock }, productList) => {
-  console.log("stock", instock, productList);
   if (instock) return productList.filter((item) => item.inStock === instock);
   return productList;
 };
 
 const filterDataByfastdelivery = ({ fastdelivery }, productList) => {
-  console.log("fast", fastdelivery, productList);
   if (fastdelivery)
     return productList.filter((item) => item.fastDelivery === fastdelivery);
   return productList;
 };
-const sortDataByPrice = ({ product, sort }, productList) => {
-  console.log("sort", sort);
-
+const sortDataByPrice = ({ sort }, productList) => {
   if (sort === null) return productList;
   if (sort === "HIGH")
     return [...productList].sort(
@@ -38,7 +33,6 @@ const sortDataByPrice = ({ product, sort }, productList) => {
     );
 };
 const filterDataByRating = ({ rating }, productList) => {
-  console.log("rating", rating, productList);
   if (rating === null) return productList;
   return productList.filter((item) => item.rating >= rating);
 };

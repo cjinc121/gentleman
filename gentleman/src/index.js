@@ -7,7 +7,6 @@ import { BrowserRouter } from "react-router-dom";
 import { CategoryContextProvider } from "./context/category-context";
 import { ProductContextProvider } from "./context/product-context";
 import { UserContextProvider } from "./context/user-context";
-
 // Call make Server
 makeServer();
 

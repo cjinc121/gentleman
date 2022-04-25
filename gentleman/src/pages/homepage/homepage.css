@@ -50,6 +50,8 @@
 .card-container-vertical {
   width: 20rem;
   border-radius: 0%;
+  border: 1px solid black;
+  border-radius: 1rem;
 }
 .card-container-vertical img {
   width: 35%;
