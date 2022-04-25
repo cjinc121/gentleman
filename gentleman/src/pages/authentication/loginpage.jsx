@@ -41,13 +41,13 @@ const Login = () => {
         </div>
         <div className="button-row-4">
           <button
-            className="button contained-button primary-button"
+            className="button contained-button primary-button "
             onClick={() => logInHandler(logUser)}
           >
             Log In
           </button>
           <button
-            className="button contained-button primary-button"
+            className="button primary-button contained-button"
             onClick={() => logInHandler(guestUser)}
           >
             Guest Login
