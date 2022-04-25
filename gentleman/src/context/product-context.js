@@ -44,7 +44,6 @@ const ProductContextProvider = ({ children }) => {
     sortDataByPrice,
     filterDataByCategory
   );
-  console.log(filterData);
   return (
     <ProductContext.Provider
       value={{ productState, productDispatch, filterData }}

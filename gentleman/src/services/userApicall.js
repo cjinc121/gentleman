@@ -23,7 +23,6 @@ export const signUpHandlerService = async (first, last, email, pass) => {
       email: email,
       password: pass,
     });
-    console.log(data);
     return data;
   } catch (error) {
     console.log(error);

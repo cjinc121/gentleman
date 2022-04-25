@@ -3,10 +3,9 @@ import { AiOutlineStar, AiOutlineHeart } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import { useProductContext } from "../../context/product-context";
 import { useUserContext } from "../../context/user-context";
-import { useState } from "react";
 const ProductListing = () => {
   const { filterData } = useProductContext();
-  const { userState, userDispatch, addToWishlistHandler, addToCartHandler } =
+  const { userState, addToWishlistHandler, addToCartHandler } =
     useUserContext();
   const navigate = useNavigate();
   return (
