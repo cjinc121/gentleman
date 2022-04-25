@@ -12,6 +12,8 @@ export const productReducer = (state, action) => {
         );
         return { ...state, category: newCategory };
       }
+    case "SET_CATEGORY":
+      return { ...state, category: [action.payload] };
     case "HIGH_TO_LOW":
       return { ...state, sort: "HIGH" };
     case "LOW_TO_HIGH":

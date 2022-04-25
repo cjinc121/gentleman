@@ -15,7 +15,7 @@ export const products = [
     discountPrice: 1299,
     categoryName: "SNEAKER",
     featuredProduct: true,
-    inStock: false,
+    inStock: true,
     fastDelivery: true,
     rating: 4,
   },
@@ -28,8 +28,8 @@ export const products = [
     discountPrice: 2000,
     categoryName: "SNEAKER",
     featuredProduct: false,
-    inStock: false,
-    fastDelivery: false,
+    inStock: true,
+    fastDelivery: true,
     rating: 4,
   },
   {
@@ -41,7 +41,7 @@ export const products = [
     discountPrice: 2999,
     categoryName: "SNEAKER",
     featuredProduct: false,
-    inStock: false,
+    inStock: true,
     fastDelivery: false,
 
     rating: 2,
@@ -68,10 +68,8 @@ export const products = [
     discountPrice: 4699,
     categoryName: "BOOTS",
     featuredProduct: true,
-
     inStock: false,
     fastDelivery: false,
-
     rating: 3,
   },
   {
@@ -83,9 +81,8 @@ export const products = [
     discountPrice: 1699,
     categoryName: "BOOTS",
     featuredProduct: false,
-    inStock: false,
+    inStock: true,
     fastDelivery: false,
-
     rating: 4,
   },
   // sandals
@@ -110,10 +107,9 @@ export const products = [
     originalPrice: "560",
     discountPrice: 499,
     categoryName: "SANDAL",
-    featuredProduct: false,
+    featuredProduct: true,
     inStock: false,
     fastDelivery: false,
-
     rating: 3,
   },
   {
@@ -125,7 +121,6 @@ export const products = [
     discountPrice: 499,
     categoryName: "SANDAL",
     featuredProduct: true,
-
     inStock: false,
     fastDelivery: false,
     rating: 4,
@@ -191,7 +186,7 @@ export const products = [
     originalPrice: "2760",
     discountPrice: 1999,
     categoryName: "SPORTS",
-    featuredProduct: false,
+    featuredProduct: true,
     inStock: false,
     fastDelivery: false,
     rating: 4,
