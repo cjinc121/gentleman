@@ -28,7 +28,7 @@ const Filter = () => {
       <div className="sidebar-heading">Price</div>
       <div className="sidebar-item">
         <div className="price-range price">
-          Min <span className="text-centre">---</span>{" "}
+          499 <span className="text-centre">---</span>{" "}
           <span className="text-end">{productState.range}</span>
         </div>
 
@@ -38,7 +38,7 @@ const Filter = () => {
           }
           list="priceRange"
           type="range"
-          min="100"
+          min="499"
           max="5000"
           step="100"
           className="price"
