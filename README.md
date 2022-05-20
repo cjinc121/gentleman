@@ -4,8 +4,8 @@
 An Ecommerce website for men Shoes
 
 # Tech Stack
-React 
-mocbee
+React,Css,JavaScript
+mockbee 
 
 # Screens
 
