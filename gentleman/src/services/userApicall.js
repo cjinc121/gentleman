@@ -13,7 +13,6 @@ export const logInHandlerService = async (email, pass) => {
     console.log("Invalid email or password", error);
   }
 };
-
 //signup
 export const signUpHandlerService = async (first, last, email, pass) => {
   try {

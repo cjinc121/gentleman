@@ -22,7 +22,11 @@ const ProductListing = () => {
         return (
           <div className="card-container-portrait">
             <div className="image-container">
-              <img src={item.photoUrl} alt="card-image" />
+              <img
+                src={item.photoUrl}
+                alt="card-image"
+                onClick={() => navigate(`/products/${item._id}`)}
+              />
               <div className="tag-image-left new-tag">New</div>
               <div class="tag-image-left rating-container-item rating-tag ">
                 {item.rating}
@@ -61,8 +65,8 @@ const ProductListing = () => {
               <p className="description">{item.description}</p>
             </div>
             <p className="card-price">
-              Rs.{item.discountPrice} &nbsp;&nbsp;&nbsp;
-              <s className="strikeoff">Rs.{item.originalPrice}</s>
+              ₹{item.discountPrice} &nbsp;&nbsp;&nbsp;
+              <s className="strikeoff">₹{item.originalPrice}</s>
             </p>
             {userState.isUserLoggedIn ? (
               a ? (

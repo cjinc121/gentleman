@@ -1,3 +1,6 @@
+.homepage-container{
+  text-align: center;
+}
 .category-container {
   display: flex;
   gap: 1rem;
@@ -6,39 +9,50 @@
   flex-wrap: wrap;
   padding: 1rem 0;
   width: 100%;
+  transition: 0.5s all ease-in-out;
+
 }
 .category-card:hover {
   border-bottom: 2px solid black;
-  transition: 0.1s all ease-in-out;
 }
 .banner-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  padding: 2rem;
+  margin: auto;
   width: 98%;
-  border: 2px solid black;
-  margin: 1%;
+  position: relative;
 }
-.left-image,
-.right-image {
-  width: 27%;
-  display: flex;
-  padding: 1rem;
-  flex-direction: column;
-  gap: 2rem;
-  justify-content: center;
+
+.banner-hero>img{
+  object-fit: cover;
+  width: 100%;
+  height: 88vh;
 }
-.middle-text {
-  width: 46%;
-  letter-spacing: 2px;
-  font-weight: bold;
-  font-size: 3rem;
+.banner-text{
+  position: absolute;
+  top: 0;
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  justify-content: center;
+  gap: 2rem;
+  text-align: center;
+  letter-spacing: 2px;
+  font-weight: bold;
+  font-size: 3rem;
+  background-color: rgba(83,77,69,.7);
+color: coral;
+}
+.banner-text>span>button{
+  background-color: #ffff00;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1200 800'%3E%3Cdefs%3E%3CradialGradient id='a' cx='0' cy='800' r='800' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23ff8000'/%3E%3Cstop offset='1' stop-color='%23ff8000' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='b' cx='1200' cy='800' r='800' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%2300ff19'/%3E%3Cstop offset='1' stop-color='%2300ff19' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='c' cx='600' cy='0' r='600' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%239900ff'/%3E%3Cstop offset='1' stop-color='%239900ff' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='d' cx='600' cy='800' r='600' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23ffff00'/%3E%3Cstop offset='1' stop-color='%23ffff00' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='e' cx='0' cy='0' r='800' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23FF0000'/%3E%3Cstop offset='1' stop-color='%23FF0000' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='f' cx='1200' cy='0' r='800' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%230CF'/%3E%3Cstop offset='1' stop-color='%230CF' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect fill='url(%23a)' width='1200' height='800'/%3E%3Crect fill='url(%23b)' width='1200' height='800'/%3E%3Crect fill='url(%23c)' width='1200' height='800'/%3E%3Crect fill='url(%23d)' width='1200' height='800'/%3E%3Crect fill='url(%23e)' width='1200' height='800'/%3E%3Crect fill='url(%23f)' width='1200' height='800'/%3E%3C/svg%3E");
+background-attachment: fixed;
+background-size: cover;
+border-radius: 5px;
+}
+
+button:hover{
+  transition: all 0.5s ease;
+  transform: scale(1.1);
 }
 .featured-container {
   display: flex;
@@ -49,9 +63,14 @@
 }
 .card-container-vertical {
   width: 20rem;
-  border-radius: 0%;
+  border-radius:1rem;
   border: 1px solid black;
   border-radius: 1rem;
+  transition: all 0.5s ease;
+}
+.card-container-vertical:hover{
+  transform: scale(1.1);
+
 }
 .card-container-vertical img {
   width: 35%;
@@ -59,6 +78,7 @@
 }
 .card-vertical-title {
   justify-content: space-evenly;
+  align-items: center;
 }
 .card-price {
   margin: 0;
@@ -69,7 +89,7 @@
 }
 .button {
   padding: 0.5rem 1rem;
-  border-radius: 0;
+  border-radius: 5px;
   margin: 0 0.5rem;
 }
 .black-button {
@@ -97,6 +117,7 @@
   padding: 1rem;
 }
 
+
 @media screen and (max-width: 500px) {
   .category-card {
     width: 40%;
@@ -108,16 +129,5 @@
     flex-direction: column;
     justify-content: flex-start;
   }
-  .left-image,
-  .right-image {
-    display: flex;
-    flex-direction: row;
-    padding: 0;
-    align-items: flex-start;
-  }
-  .middle-text {
-    align-self: flex-start;
-    width: 100%;
-    gap: 1rem;
-  }
+  
 }

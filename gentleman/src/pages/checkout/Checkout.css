@@ -1,0 +1,81 @@
+.page-heading{
+  text-align: center;
+  font-weight: 400;
+  font-size: 2rem;
+  padding: 1rem;
+
+}
+.checkout-container {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  grid-gap: 5rem;
+  gap: 5rem;
+  justify-content: center;
+  align-items: self-start;}
+
+.address-selection>.address{
+  display: flex;
+    align-items: baseline;
+    gap: 10px;
+    border: 1px solid gray;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.order-checkout-box{
+  padding: 1rem;
+  border: 1px solid gray;
+  border-radius: 1rem;
+  height: max-content;
+}
+.items-price{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1rem;
+  padding: 5px 0;
+}
+.items-price>.item-type{
+  display: flex;
+  flex-direction: column;
+}
+.bill-card{
+  padding: 1rem;
+  border: 1px solid gray;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.items{
+  border-bottom: 1px solid gray;
+}
+.bill-card>.items-container{
+  margin: 1rem 0;
+}
+.bill-card-title{
+  border-bottom: 1px solid gray;
+  text-align: center;
+  font-size: 1.5rem;
+}
+.card-div-title{
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 300;
+
+}
+.bill-card>button{
+  min-width:max-content;
+  width: 90%;
+  padding: 1rem;
+  margin: 1rem auto;
+ font-size: 1.2rem;
+ background-color: black;
+color: aliceblue;
+}
+
+  @media screen and (max-width: 500px){
+    .order-details{
+      width: 95%;
+    }
+    
+  } 

@@ -19,15 +19,18 @@
   padding: 1rem;
   border: 1px solid var(--gray-color);
   border-radius: 0;
+  transition:  all 0.5s ease;
+
 }
 .image-container {
   padding: 1rem;
   margin: 0%;
   background-color: var(--white-color);
+  cursor: pointer;
 }
 .card-container-portrait:hover {
   border: 1px solid var(--black-color);
-  transition: 0.3s border ease-in-out;
+transform: scale(1.1);
 }
 .bottom-responsive-button {
   display: none;
@@ -35,6 +38,9 @@
 .card-price,
 .card-title {
   margin: 0 1rem;
+}
+.card-title>.main-title{
+  font-size: 1.2rem;
 }
 .price {
   width: 80%;

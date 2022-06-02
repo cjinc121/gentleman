@@ -1,9 +1,10 @@
 import { useUserContext } from "../../context/user-context";
 import { MdCancel } from "react-icons/md";
 import { GiNotebook } from "react-icons/gi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./wishlist.css";
 const Wishlist = () => {
+  const navigate = useNavigate();
   const { userState, deleteFromWishlistHandler, addToCartHandler } =
     useUserContext();
   return (
@@ -25,7 +26,10 @@ const Wishlist = () => {
           });
           return (
             <div className="card-container-item">
-              <div className="card-img">
+              <div
+                className="card-img"
+                onClick={() => navigate(`/products/${item._id}`)}
+              >
                 <img src={item.photoUrl} />
                 <div
                   className="tag-image-right cart-icon"

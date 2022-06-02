@@ -1,5 +1,5 @@
 import "./homepage.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useCategoryContext } from "../../context/category-context";
 import { useProductContext } from "../../context/product-context";
 import { useUserContext } from "../../context/user-context";
@@ -7,27 +7,28 @@ const Homepage = () => {
   const { category } = useCategoryContext();
   const { productState, productDispatch } = useProductContext();
   const { userState, userDispatch } = useUserContext();
+  const navigate = useNavigate();
+
   return (
-    <div>
+    <div className="homepage-container">
       {/* banner */}
       <div className="banner-container">
-        <div className="left-image">
-          <img src="../../assets/7.png" alt="left-image" />
-          <img src="../../assets/10.png" alt="right-image" />
-          <img src="../../assets/11.png" alt="right-image" />
-        </div>
-        <div className="middle-text">
-          NEW SUMMER SNEAKERS COLLECTION
-          <Link to="/products">
-            <button className="button containedbutton black-button">
-              Explore Now
-            </button>
-          </Link>
-        </div>
-        <div className="right-image">
-          <img src="../../assets/10.png" alt="right-image" />
-          <img src="../../assets/11.png" alt="right-image" />
-          <img src="../../assets/12.png" alt="right-image" />
+        <div className="banner-hero">
+          <img src="../../assets/sneaker-hero.png" alt="image-banner" />
+          <div className="banner-text">
+            <span> NEW SUMMER SNEAKERS COLLECTION</span>
+            <span>
+              <button
+                className="button containedbutton black-button"
+                onClick={() => {
+                  productDispatch({ type: "SET_CATEGORY", payload: "empty" });
+                  navigate("/products");
+                }}
+              >
+                Explore Now
+              </button>
+            </span>
+          </div>
         </div>
       </div>
       {/* category */}
@@ -43,6 +44,7 @@ const Homepage = () => {
                   type: "SET_CATEGORY",
                   payload: item.categoryName,
                 });
+                navigate("/products");
               }}
             >
               <div className="top-image">
@@ -73,8 +75,8 @@ const Homepage = () => {
                   <h2 className="main-title">{item.title}</h2>
                   <p className="desc">{item.description}</p>
                   <p className="card-price">
-                    ${item.discountPrice}&nbsp;&nbsp;{" "}
-                    <s>${item.originalPrice}</s>
+                    ₹{item.discountPrice}&nbsp;&nbsp;{" "}
+                    <s>₹{item.originalPrice}</s>
                   </p>
                   <p className="discount">
                     {Math.round(
