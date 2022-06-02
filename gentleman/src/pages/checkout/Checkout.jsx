@@ -165,7 +165,7 @@ export const Checkout = () => {
           <div className="order-product-list">
             <section>
               <div className="bill-card">
-                <h2 className="card-title">ORDER DETAILS</h2>
+                <h2 className="bill-card-title">ORDER DETAILS</h2>
                 <div className="items-container">
                   <div className="items">
                     <h3 className="card-div-title">PURCHASED ITEMS</h3>

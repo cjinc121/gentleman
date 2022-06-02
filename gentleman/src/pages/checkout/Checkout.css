@@ -52,7 +52,7 @@
 .bill-card>.items-container{
   margin: 1rem 0;
 }
-.card-title{
+.bill-card-title{
   border-bottom: 1px solid gray;
   text-align: center;
   font-size: 1.5rem;
