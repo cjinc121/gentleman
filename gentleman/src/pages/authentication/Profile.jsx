@@ -154,7 +154,7 @@ const Profile = () => {
                                   <div className="product-details">
                                     <div>{product.title}</div>
                                     <div>
-                                      {product.qty} x ₹{product.price}
+                                      {product.qty} x ₹{product.discountPrice}
                                     </div>
                                   </div>
                                 </div>
