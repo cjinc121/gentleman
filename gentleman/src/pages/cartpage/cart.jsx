@@ -85,7 +85,7 @@ const Cart = () => {
                         </div>
                       </div>
                       <p className="title card-price">
-                        Rs. {item.discountPrice} <s>Rs.{item.originalPrice}</s>{" "}
+                        ₹ {item.discountPrice} <s>₹{item.originalPrice}</s>{" "}
                         <span className="discount">
                           (
                           {Math.round(
@@ -128,18 +128,18 @@ const Cart = () => {
                 </div>
                 <div className="bill-cart-row">
                   Price ({totalQuantity} items){" "}
-                  <span>Rs.{totalPrice + totalDiscount}</span>
+                  <span>₹{totalPrice + totalDiscount}</span>
                 </div>
                 <div className="bill-cart-row">
-                  Discount <span>-Rs.{totalDiscount}</span>
+                  Discount <span>-₹{totalDiscount}</span>
                 </div>
                 <div className="bill-cart-row">
-                  Delivery Charges<span>Rs.0</span>
+                  Delivery Charges<span>₹.0</span>
                 </div>
                 <div className="bill-cart-row bold-row border-top">
-                  TOTAL AMOUNT <span>Rs.{totalPrice}</span>
+                  TOTAL AMOUNT <span>₹{totalPrice}</span>
                 </div>
-                <p>You will save Rs.{totalDiscount} on this order</p>
+                <p>You will save ₹{totalDiscount} on this order</p>
                 <button
                   className="button contained-button black-button"
                   onClick={() => navigate("/checkout")}

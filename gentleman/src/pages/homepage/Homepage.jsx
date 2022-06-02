@@ -75,8 +75,8 @@ const Homepage = () => {
                   <h2 className="main-title">{item.title}</h2>
                   <p className="desc">{item.description}</p>
                   <p className="card-price">
-                    ${item.discountPrice}&nbsp;&nbsp;{" "}
-                    <s>${item.originalPrice}</s>
+                    ₹{item.discountPrice}&nbsp;&nbsp;{" "}
+                    <s>₹{item.originalPrice}</s>
                   </p>
                   <p className="discount">
                     {Math.round(

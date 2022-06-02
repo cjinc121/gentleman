@@ -65,8 +65,8 @@ const ProductListing = () => {
               <p className="description">{item.description}</p>
             </div>
             <p className="card-price">
-              Rs.{item.discountPrice} &nbsp;&nbsp;&nbsp;
-              <s className="strikeoff">Rs.{item.originalPrice}</s>
+              ₹{item.discountPrice} &nbsp;&nbsp;&nbsp;
+              <s className="strikeoff">₹{item.originalPrice}</s>
             </p>
             {userState.isUserLoggedIn ? (
               a ? (

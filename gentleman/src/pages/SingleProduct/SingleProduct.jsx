@@ -54,8 +54,8 @@ export const SingleProduct = () => {
               <AiOutlineStar />
             </div>
             <p className="card-price">
-              Rs.{singleProduct.discountPrice} &nbsp;&nbsp;&nbsp;
-              <s className="strikeoff">Rs.{singleProduct.originalPrice}</s>
+              ₹{singleProduct.discountPrice} &nbsp;&nbsp;&nbsp;
+              <s className="strikeoff">₹{singleProduct.originalPrice}</s>
             </p>
 
             <hr />
