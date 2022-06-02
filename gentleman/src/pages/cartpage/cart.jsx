@@ -3,7 +3,9 @@ import "./cart.css";
 import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
 import { MdCancel } from "react-icons/md";
 import { BsFillCartXFill } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 const Cart = () => {
+  const navigate = useNavigate();
   const {
     userState,
     addToWishlistHandler,
@@ -43,7 +45,11 @@ const Cart = () => {
                 });
                 return (
                   <div className="card-container-vertical">
-                    <img className="card-image" src={item.photoUrl} />
+                    <img
+                      className="card-image"
+                      src={item.photoUrl}
+                      onClick={() => navigate(`/products/${item._id}`)}
+                    />
                     <div className="card-vertical-title">
                       <h2 className="title main-title">{item.title}</h2>
                       <div
@@ -134,8 +140,11 @@ const Cart = () => {
                   TOTAL AMOUNT <span>Rs.{totalPrice}</span>
                 </div>
                 <p>You will save Rs.{totalDiscount} on this order</p>
-                <button className="button contained-button black-button">
-                  PLACE ORDER
+                <button
+                  className="button contained-button black-button"
+                  onClick={() => navigate("/checkout")}
+                >
+                  Checkout
                 </button>
               </div>
             </div>

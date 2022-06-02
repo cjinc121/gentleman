@@ -7,7 +7,7 @@ import { v4 as uuid } from "uuid";
 
 export const products = [
   {
-    _id: uuid(),
+    _id: "p1",
     title: " White Lace Up Trendy",
     description: "Outdoor Fashion Sneakers",
     photoUrl: "../../assets/s-1.jpg",
@@ -20,7 +20,7 @@ export const products = [
     rating: 4,
   },
   {
-    _id: uuid(),
+    _id: "p2",
     title: " Olive Green Lace Up Trendy",
     description: "Stylish Outdoor Fashion Sneakers",
     photoUrl: "../../assets/s-2.jpg",
@@ -33,7 +33,7 @@ export const products = [
     rating: 4,
   },
   {
-    _id: uuid(),
+    _id: "p3",
     title: " Army Trending Lace Up",
     description: "Camouflage Sneakers",
     photoUrl: "../../assets/s-3.jpg",
@@ -47,7 +47,7 @@ export const products = [
     rating: 2,
   },
   {
-    _id: uuid(),
+    _id: "p4",
     title: " Black Suede Leather Slip On",
     description: "Chelsea Boots",
     photoUrl: "../../assets/b-1.jpg",
@@ -60,7 +60,7 @@ export const products = [
     rating: 2,
   },
   {
-    _id: uuid(),
+    _id: "p5",
     title: " Men's Tan Leather Lace Up High",
     description: " Boots",
     photoUrl: "../../assets/b-3.jpg",
@@ -73,7 +73,7 @@ export const products = [
     rating: 3,
   },
   {
-    _id: uuid(),
+    _id: "p6",
     title: "Tan Suede Leather Slip On",
     description: "Chelsea Boots",
     photoUrl: "../../assets/b-2.jpg",
@@ -87,7 +87,7 @@ export const products = [
   },
   // sandals
   {
-    _id: uuid(),
+    _id: "p7",
     title: "Camel Formal Slip On",
     description: "Sandal",
     photoUrl: "../../assets/sandal-3.jpg",
@@ -100,7 +100,7 @@ export const products = [
     rating: 1,
   },
   {
-    _id: uuid(),
+    _id: "p8",
     title: "Navy Blue Outdoor",
     description: "Sandal",
     photoUrl: "../../assets/sandal-2.jpg",
@@ -113,7 +113,7 @@ export const products = [
     rating: 3,
   },
   {
-    _id: uuid(),
+    _id: "p9",
     title: "Black Buckle Criss Cross",
     description: "Sandal",
     photoUrl: "../../assets/sandal-1.jpg",
@@ -126,7 +126,7 @@ export const products = [
     rating: 4,
   },
   {
-    _id: uuid(),
+    _id: "p10",
     title: "Black Formal Lace Up Shoes",
     description: "Formals",
     photoUrl: "../../assets/o-1.jpg",
@@ -139,7 +139,7 @@ export const products = [
     rating: 4,
   },
   {
-    _id: uuid(),
+    _id: "p11",
     title: "Black Lace Up Leather",
     description: "Formals",
     photoUrl: "../../assets/o-2.jpg",
@@ -152,7 +152,7 @@ export const products = [
     rating: 4,
   },
   {
-    _id: uuid(),
+    _id: "p12",
     title: "Brown Formal Lace Up Shoes",
     description: "Formals",
     photoUrl: "../../assets/o-3.jpg",
@@ -166,7 +166,7 @@ export const products = [
   },
   // sports
   {
-    _id: uuid(),
+    _id: "p13",
     title: "Black Sports & Outdoor ",
     description: "Running Shoes",
     photoUrl: "../../assets/sports-2.jpg",
@@ -179,7 +179,7 @@ export const products = [
     rating: 4,
   },
   {
-    _id: uuid(),
+    _id: "p14",
     title: "Green Sports & Outdoor ",
     description: "Running Shoes",
     photoUrl: "../../assets/sports-1.jpg",
@@ -192,7 +192,7 @@ export const products = [
     rating: 4,
   },
   {
-    _id: uuid(),
+    _id: "p15",
     title: "Multi Sports & Outdoor ",
     description: "Running Shoes",
     photoUrl: "../../assets/sports-3.jpg",

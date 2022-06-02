@@ -13,6 +13,14 @@ export const productReducer = (state, action) => {
         return { ...state, category: newCategory };
       }
     case "SET_CATEGORY":
+      if (action.payload === "empty") {
+        while (state.category.length > 0) {
+          state.category.pop();
+        }
+        return {
+          ...state,
+        };
+      }
       return { ...state, category: [action.payload] };
     case "HIGH_TO_LOW":
       return { ...state, sort: "HIGH" };

@@ -3,7 +3,6 @@ import { userReducer } from "../utils/userReducer";
 import {
   logInHandlerService,
   signUpHandlerService,
-  signOutHandlerService,
 } from "../services/userApicall";
 import { useNavigate } from "react-router-dom";
 import {
@@ -19,14 +18,20 @@ import {
 const UserContext = createContext();
 const useUserContext = () => useContext(UserContext);
 const token = localStorage.getItem("token");
+const user = JSON.parse(localStorage.getItem("user"));
 
 const UserContextProvider = ({ children }) => {
   const [userState, userDispatch] = useReducer(userReducer, {
-    isLoggedIn: token ? true : false,
+    isUserLoggedIn: token ? true : false,
     tokenVal: token,
-    userData: {},
+    userData: user,
     cart: [],
     wishlist: [],
+    addresses: [],
+    orders: [],
+    showAddressModal: false,
+    addressToEdit: null,
+    userProfileTab: "",
   });
   const navigate = useNavigate();
 
@@ -34,29 +39,26 @@ const UserContextProvider = ({ children }) => {
     const res = await logInHandlerService(email, password);
     if (res.status === 200) {
       localStorage.setItem("token", res.data.encodedToken);
+      localStorage.setItem("user", JSON.stringify(res.data.foundUser));
       userDispatch({ type: "CREATE_SESSION", payload: res.data });
-
       navigate("/");
     }
   };
 
   const signUpHandler = async ({ first, last, email, password }) => {
     const data = await signUpHandlerService(first, last, email, password);
-    // saving the encodedToken in the localStorage
-    localStorage.setItem("token", data.encodedToken);
+    localStorage.setItem("token", JSON.stringify(data.encodedToken));
+    localStorage.setItem("user", JSON.stringify(data.createdUser));
     userDispatch({ type: "START_SESSION", payload: data });
     navigate("/");
   };
 
   const signOutHandler = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
     userDispatch({ type: "END_SESSION" });
     navigate("/login");
   };
-  useEffect(() => {
-    getAllWishlistHandler();
-    getAllCartHandler();
-  }, []);
 
   const getAllWishlistHandler = async () => {
     const { data, status } = await getAllWishlistService(userState);
@@ -126,6 +128,11 @@ const UserContextProvider = ({ children }) => {
       });
     }
   };
+  useEffect(() => {
+    getAllWishlistHandler();
+    getAllCartHandler();
+  }, []);
+
   return (
     <UserContext.Provider
       value={{

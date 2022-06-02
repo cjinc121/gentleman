@@ -3,7 +3,9 @@ const jwt = require("jsonwebtoken");
 import dayjs from "dayjs";
 
 export const requiresAuth = function (request) {
+  console.log(request, request.requestHeaders);
   const encodedToken = request.requestHeaders.authorization;
+
   const decodedToken = jwt.verify(
     encodedToken,
     process.env.REACT_APP_JWT_SECRET

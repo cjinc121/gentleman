@@ -1,15 +1,19 @@
 import "./navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BsHeartFill, BsFillCartFill } from "react-icons/bs";
-import { AiOutlineLogout, AiOutlineLogin } from "react-icons/ai";
+import { FaUserCircle } from "react-icons/fa";
+import { AiOutlineLogin } from "react-icons/ai";
 import { useUserContext } from "../../context/user-context";
 const Navbar = () => {
-  const { userState, signOutHandler } = useUserContext();
+  const { userState } = useUserContext();
+  const navigate = useNavigate();
+
   return (
     <header className="navbar">
-      <div className="left-nav">
+      <div className="left-nav" onClick={() => navigate("/")}>
         <Link className="p-1 fs-15" to="/">
           <span className="brand fs-15">
+            <img src="../../assets/G.webp" className="brand-logo" />
             <span className="brand-name">
               <s>GENTLE</s>MAN
             </span>
@@ -38,16 +42,16 @@ const Navbar = () => {
               </div>
             </Link>
           </li>
-          <li>
+          <li className="navbar-username">
             {userState.isUserLoggedIn
               ? `Hi ${userState.userData.firstName}`
               : ""}
           </li>
           <li>
             {userState.isUserLoggedIn ? (
-              <AiOutlineLogout
+              <FaUserCircle
                 className="nav-icon"
-                onClick={() => signOutHandler()}
+                onClick={() => navigate("/profile")}
               />
             ) : (
               <Link to="/login">

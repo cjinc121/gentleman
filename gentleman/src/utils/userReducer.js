@@ -9,7 +9,6 @@ const userReducer = (state, action) => {
         ...state,
         cart: [...state.cart, action.payload],
       };
-
     case "ADD_TO_WISHLIST":
       if (
         state.wishlist.find((item) => item.id === action.payload.id) ===
@@ -17,39 +16,45 @@ const userReducer = (state, action) => {
       )
         return { ...state, wishlist: [...state.wishlist, action.payload] };
       else return { ...state };
-    // case "REMOVE_FROM_CART":
-    //   return {
-    //     ...state,
-    //     cart: [...action.payload],
-    //     // state.cart.filter( (item) => item.product.id !== action.payload.product.id),
-    //   };
-    // case "REMOVE_FROM_WISHLIST":
-    //   return {
-    //     ...state,
-    //     wishlist: [...action.payload],
-    //     // state.wishlist.filter((item) => item.id != action.payload.id)
-    //   };
+    case "GET_ADDRESS":
+      return {
+        ...state,
+        addresses: action.payload,
+      };
+    case "ADD_NEW_ADDRESS":
+      return {
+        ...state,
+        addresses: action.payload,
+      };
+    case "REMOVE_ADDRESS":
+      return {
+        ...state,
+        addresses: action.payload,
+      };
+    case "UPDATE_ADDRESS":
+      return {
+        ...state,
+        addresses: action.payload,
+      };
+    case "ADD_NEW_ORDER":
+      return {
+        ...state,
+        orders: action.payload,
+      };
+    case "GET_ORDERS":
+      return {
+        ...state,
+        orders: action.payload,
+      };
+    case "TOGGLE_ADDRESS_MODAL":
+      return { ...state, showAddressModal: action.payload };
 
-    // case "INCREASE_QUANTITY":
-    //   return {
-    //     ...state,
-    //     cart: [...action.payload],
-    //     // cart: state.cart.map((item) => {
-    //     //   return item.product.id === action.payload
-    //     //     ? { ...item, quantity: item.quantity + 1 }
-    //     //     : item;
-    //     // }),
-    //   };
-    // case "DECREASE_QUANTITY":
-    //   return {
-    //     ...state,
-    //     cart: [...action.payload],
-    //     // cart: state.cart.map((item) => {
-    //     //   return item.product.id === action.payload && item.quantity > 1
-    //     //     ? { ...item, quantity: item.quantity - 1 }
-    //     //     : item;
-    //     // }),
-    //   };
+    case "ADDRESS_TO_EDIT":
+      return { ...state, addressToEdit: action.payload };
+
+    case "USER_PROFILE_TAB":
+      return { ...state, userProfileTab: action.payload };
+
     case "CREATE_SESSION":
       return {
         ...state,
@@ -62,7 +67,7 @@ const userReducer = (state, action) => {
     case "START_SESSION":
       return {
         ...state,
-        tokenVal: JSON.stringify(action.payload.encodedToken),
+        tokenVal: action.payload.encodedToken,
         isUserLoggedIn: true,
         cart: action.payload.createdUser.cart,
         wishlist: action.payload.createdUser.wishlist,
