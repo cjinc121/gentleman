@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { removeAddressHandler } from "../../utils/addressHandlers/removeAddressHandler";
+import { getOrdersHandler } from "../../utils/ordersHandler/getOrdersHandler";
+import { getAddressesHandler } from "../../utils/addressHandlers/getAddressesHandler";
 import { useUserContext } from "../../context/user-context";
 import { AiOutlinePlus } from "react-icons/ai";
 import "./profile.css";
@@ -38,6 +40,10 @@ const Profile = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     userDispatch({ type: "USER_PROFILE_TAB", payload: "" });
+  }, []);
+  useEffect(() => {
+    getOrdersHandler(tokenVal, userDispatch);
+    getAddressesHandler(tokenVal, userDispatch);
   }, []);
 
   return (
