@@ -7,6 +7,7 @@ const Homepage = () => {
   const { category } = useCategoryContext();
   const { productState, productDispatch } = useProductContext();
   const { userState, userDispatch } = useUserContext();
+  const { isUserLoggedIn } = userState;
   const navigate = useNavigate();
 
   return (
@@ -75,13 +76,11 @@ const Homepage = () => {
                   <h2 className="main-title">{item.title}</h2>
                   <p className="desc">{item.description}</p>
                   <p className="card-price">
-                    ₹{item.discountPrice}&nbsp;&nbsp;{" "}
-                    <s>₹{item.originalPrice}</s>
+                    ₹{item.discountPrice}&nbsp;&nbsp; <s>₹{item.originalPrice}</s>
                   </p>
                   <p className="discount">
                     {Math.round(
-                      ((item.originalPrice - item.discountPrice) * 100) /
-                        item.originalPrice
+                      ((item.originalPrice - item.discountPrice) * 100) / item.originalPrice
                     )}
                     %OFF
                   </p>
@@ -93,7 +92,9 @@ const Homepage = () => {
                     <button
                       className="button contained-button black-button"
                       onClick={() =>
-                        userDispatch({ type: "ADD_TO_WISHLIST", payload: item })
+                        isUserLoggedIn
+                          ? userDispatch({ type: 'ADD_TO_WISHLIST', payload: item })
+                          : navigate('/login')
                       }
                     >
                       Add to Wishlist

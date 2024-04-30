@@ -1,36 +1,36 @@
 import axios from "axios";
 
-export const addNewAddressService = async (address, token) => {
+export const addNewAddressService = async (address) => {
   const res = await axios.post(
-    "/api/user/address",
+    'http://localhost:3001/api/user/address',
     { address },
-    { headers: { authorization: token } }
+    { withCredentials: true }
   );
   return res;
 };
 
-export const getAddressService = (token) => {
-  return axios.get("/api/user/address", { headers: { authorization: token } });
+export const getAddressService = () => {
+  return axios.get('http://localhost:3001/api/user/address', { withCredentials: true });
 };
 
-export const removeAddressService = async (_id, token) => {
-  console.log(_id, "addres");
+export const removeAddressService = async (_id) => {
+  console.log(_id, 'addres');
 
   try {
-    const res = await axios.delete(`/api/user/address/${_id}`, {
-      headers: { authorization: token },
+    const res = await axios.delete(`http://localhost:3001/api/user/address/${_id}`, {
+      withCredentials: true,
     });
     return res;
   } catch (error) {
     console.log(error);
   }
 };
-export const updateAddressService = (address, token) => {
+export const updateAddressService = (address) => {
   try {
-    const res = axios.post(
-      `/api/user/address/${address._id}`,
+    const res = axios.put(
+      `http://localhost:3001/api/user/address/${address._id}`,
       { address },
-      { headers: { authorization: token } }
+      { withCredentials: true }
     );
     return res;
   } catch (err) {
@@ -38,14 +38,14 @@ export const updateAddressService = (address, token) => {
   }
 };
 
-export const addNewOrderService = (order, token) => {
+export const addNewOrderService = (order) => {
   return axios.post(
-    "/api/user/orders",
+    'http://localhost:3001/api/user/orders',
     { ...order },
-    { headers: { authorization: token } }
+    { withCredentials: true }
   );
 };
 
-export const getOrdersService = (token) => {
-  return axios.get("/api/user/orders", { headers: { authorization: token } });
+export const getOrdersService = () => {
+  return axios.get('http://localhost:3001/api/user/orders', { withCredentials: true });
 };

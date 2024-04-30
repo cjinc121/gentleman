@@ -25,7 +25,7 @@ const ProductContextProvider = ({ children }) => {
   useEffect(() => {
     (async () => {
       try {
-        const productResponse = await axios.get("/api/products");
+        const productResponse = await axios.get("http://localhost:3001/api/products");
         productDispatch({
           type: "Add_Product_List",
           payload: productResponse.data.products,

@@ -7,7 +7,7 @@ const userReducer = (state, action) => {
     case "ADD_TO_CART":
       return {
         ...state,
-        cart: [...state.cart, action.payload],
+        cart:  action.payload,
       };
     case "ADD_TO_WISHLIST":
       if (
@@ -58,7 +58,6 @@ const userReducer = (state, action) => {
     case "CREATE_SESSION":
       return {
         ...state,
-        tokenVal: action.payload.encodedToken,
         isUserLoggedIn: true,
         cart: action.payload.foundUser.cart,
         wishlist: action.payload.foundUser.wishlist,
@@ -67,7 +66,6 @@ const userReducer = (state, action) => {
     case "START_SESSION":
       return {
         ...state,
-        tokenVal: action.payload.encodedToken,
         isUserLoggedIn: true,
         cart: action.payload.createdUser.cart,
         wishlist: action.payload.createdUser.wishlist,
