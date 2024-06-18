@@ -16,7 +16,6 @@ import { AddressModal } from '../src/components/AddressModal/AddressModal.jsx';
 function App() {
   const { userState } = useUserContext();
   const { showAddressModal } = userState;
-
   return (
     <div className="App">
       {showAddressModal && <AddressModal />}

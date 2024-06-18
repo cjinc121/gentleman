@@ -8,7 +8,6 @@ import { MdFlashOff } from "react-icons/md";
 import { IoFlash } from "react-icons/io5";
 import { GrCheckboxSelected } from "react-icons/gr";
 import { AiOutlineStar } from "react-icons/ai";
-import axios from "axios";
 import "./SingleProduct.css";
 
 export const SingleProduct = () => {
@@ -28,7 +27,9 @@ export const SingleProduct = () => {
   useEffect(() => {
     (async () => {
       try {
-        const productResponse = await axios.get(`http://localhost:3001/api/products/${productId}`);
+        const productResponse = await axios.get(
+          `${process.env.REACT_APP_API_URL}api/products/${productId}`
+        );
         setSingleProduct(productResponse.data.product);
       } catch (err) {
         console.log(err);

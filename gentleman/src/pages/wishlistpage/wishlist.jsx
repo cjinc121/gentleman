@@ -14,22 +14,19 @@ const Wishlist = () => {
       <div className="wishlist-container">
         {userState.wishlist.length === 0 && (
           <div className="page-header">
-            {" "}
+            {' '}
             Empty
             <GiNotebook />
           </div>
         )}
-        {userState.wishlist.map((item) => {
-          let a = "";
+        {userState.wishlist.map((item, index) => {
+          let a = '';
           userState.cart.map((cartItem) => {
-            if (cartItem.id === item.id) a = "true";
+            if (cartItem.id === item.id) a = 'true';
           });
           return (
-            <div className="card-container-item">
-              <div
-                className="card-img"
-                onClick={() => navigate(`/products/${item._id}`)}
-              >
+            <div className="card-container-item" key={index}>
+              <div className="card-img" onClick={() => navigate(`/products/${item._id}`)}>
                 <img src={item.photoUrl} />
                 <div
                   className="tag-image-right cart-icon"

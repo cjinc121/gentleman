@@ -1,10 +1,11 @@
-import axios from "axios";
 
 //get Wishlist
 
+import { Api } from "../utils/Api";
+
 export const getAllWishlistService = async () => {
   try {
-    const res = await axios.get('http://localhost:3001/api/user/wishlist', {
+    const res = await Api.get(`${process.env.REACT_APP_API_URL}api/user/wishlist`, {
       withCredentials: true,
     });
     return res;
@@ -16,8 +17,8 @@ export const getAllWishlistService = async () => {
 
 export const addToWishlistService = async (product) => {
   try {
-    const res = await axios.post(
-      'http://localhost:3001/api/user/wishlist',
+    const res = await Api.post(
+      `${process.env.REACT_APP_API_URL}api/user/wishlist`,
       {
         product: product,
       },
@@ -31,7 +32,7 @@ export const addToWishlistService = async (product) => {
 //delete from wishlist
 export const deleteFromWishlistService = async (_id) => {
   try {
-    const res = await axios.delete(`http://localhost:3001/api/user/wishlist/${_id}`, {
+    const res = await Api.delete(`${process.env.REACT_APP_API_URL}api/user/wishlist/${_id}`, {
       withCredentials: true,
     });
 
@@ -43,7 +44,7 @@ export const deleteFromWishlistService = async (_id) => {
 //get cart
 export const getAllCartService = async () => {
   try {
-    const res = await axios.get('http://localhost:3001/api/user/cart', { withCredentials: true });
+    const res = await Api.get(`${process.env.REACT_APP_API_URL}api/user/cart`, { withCredentials: true });
     return res;
   } catch (error) {
     console.log(error);
@@ -52,8 +53,8 @@ export const getAllCartService = async () => {
 //add to cart
 export const addToCartService = async (product) => {
   try {
-    const res = await axios.post(
-      'http://localhost:3001/api/user/cart',
+    const res = await Api.post(
+      `${process.env.REACT_APP_API_URL}api/user/cart`,
       {
         product,
       },
@@ -67,7 +68,7 @@ export const addToCartService = async (product) => {
 //delete from cart
 export const deleteFromCartService = async (_id) => {
   try {
-    const res = await axios.delete(`http://localhost:3001/api/user/cart/${_id}`, {
+    const res = await Api.delete(`${process.env.REACT_APP_API_URL}api/user/cart/${_id}`, {
       withCredentials: true,
     });
     return res;
@@ -79,8 +80,8 @@ export const deleteFromCartService = async (_id) => {
 
 export const increaseQuantityCartService = async (_id) => {
   try {
-    const data = await axios.post(
-      `http://localhost:3001/api/user/cart/${_id}`,
+    const data = await Api.post(
+      `${process.env.REACT_APP_API_URL}api/user/cart/${_id}`,
       {
         action: {
           type: 'increment',
@@ -96,8 +97,8 @@ export const increaseQuantityCartService = async (_id) => {
 //decrease quantity
 export const decreaseQuantityCartService = async (_id) => {
   try {
-    const res = await axios.post(
-      `http://localhost:3001/api/user/cart/${_id}`,
+    const res = await Api.post(
+      `${process.env.REACT_APP_API_URL}api/user/cart/${_id}`,
       {
         action: {
           type: 'decrement',
