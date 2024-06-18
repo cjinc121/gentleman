@@ -1,8 +1,8 @@
 import { addNewAddressService } from "../../services/address&ordersApiCalls";
 
-const addNewAddressHandler = async (address, userDispatch, token) => {
+const addNewAddressHandler = async (address, userDispatch) => {
   try {
-    const response = await addNewAddressService(address, token);
+    const response = await addNewAddressService(address);
     console.log(response);
     if (response.status === 201) {
       userDispatch({ type: "ADD_NEW_ADDRESS", payload: response.data.address });

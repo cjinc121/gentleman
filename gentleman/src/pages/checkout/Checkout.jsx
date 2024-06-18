@@ -94,7 +94,7 @@ export const Checkout = () => {
         theme: { color: "#202528" },
         handler: function (response) {
           const order = getOrderObj();
-          addNewOrderHandler(order, userDispatch, userState.tokenVal);
+          addNewOrderHandler(order, userDispatch);
           userState.cart.map((item) => deleteFromCartHandler(item._id));
           navigate("/profile");
         },

@@ -1,8 +1,8 @@
 import { updateAddressService } from "../../services/address&ordersApiCalls";
 
-const updateAddressHandler = async (address, token, userDispatch) => {
+const updateAddressHandler = async (address, userDispatch) => {
   try {
-    const response = await updateAddressService(address, token);
+    const response = await updateAddressService(address);
     if (response.status === 200) {
       userDispatch({ type: "UPDATE_ADDRESS", payload: response.data.address });
     } else {

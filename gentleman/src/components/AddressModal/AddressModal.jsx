@@ -17,7 +17,7 @@ const AddressModal = () => {
     mobile: "",
   });
   const {
-    userState: { tokenVal, addressToEdit },
+    userState: {isUserLoggedIn, addressToEdit },
     userDispatch,
   } = useUserContext();
 
@@ -50,15 +50,15 @@ const AddressModal = () => {
 
   const callAddNewAddressHandler = () => {
     if (checkInputs()) {
-      if (tokenVal) {
+      if (isUserLoggedIn) {
         if (addressToEdit) {
-          updateAddressHandler(address, tokenVal, userDispatch);
+          updateAddressHandler(address, userDispatch);
           userDispatch({
             type: "ADDRESS_TO_EDIT",
             payload: null,
           });
         } else {
-          addNewAddressHandler(address, userDispatch, tokenVal);
+          addNewAddressHandler(address, userDispatch);
         }
         userDispatch({
           type: "TOGGLE_ADDRESS_MODAL",

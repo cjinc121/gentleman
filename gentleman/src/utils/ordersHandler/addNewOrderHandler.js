@@ -1,10 +1,10 @@
 import { addNewOrderService } from "../../services/address&ordersApiCalls";
 
-const addNewOrderHandler = async (order, userDispatch, token) => {
+const addNewOrderHandler = async (order, userDispatch) => {
   try {
-    const response = await addNewOrderService(order, token);
+    const response = await addNewOrderService(order);
     if (response.status === 201) {
-      userDispatch({ type: "ADD_NEW_ORDER", payload: response.data.orders });
+      userDispatch({ type: 'ADD_NEW_ORDER', payload: response.data.orders });
     } else {
       throw new Error();
     }

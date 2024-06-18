@@ -9,41 +9,40 @@ import "./profile.css";
 const Profile = () => {
   const navigate = useNavigate();
   const { userState, signOutHandler, userDispatch } = useUserContext();
-  const { tokenVal } = userState;
   const [tab, setTab] = useState(
-    userState.userProfileTab !== "" ? userState.userProfileTab : "profile"
+    userState.userProfileTab !== '' ? userState.userProfileTab : 'profile'
   );
-  const currentUser = JSON.parse(localStorage.getItem("user"));
+  const currentUser = JSON.parse(localStorage.getItem('user'));
 
   const updateAddress = (address) => {
     userDispatch({
-      type: "ADDRESS_TO_EDIT",
+      type: 'ADDRESS_TO_EDIT',
       payload: address,
     });
     userDispatch({
-      type: "TOGGLE_ADDRESS_MODAL",
+      type: 'TOGGLE_ADDRESS_MODAL',
       payload: true,
     });
   };
 
   const addNewAddress = () => {
     userDispatch({
-      type: "ADDRESS_TO_EDIT",
+      type: 'ADDRESS_TO_EDIT',
       payload: null,
     });
     userDispatch({
-      type: "TOGGLE_ADDRESS_MODAL",
+      type: 'TOGGLE_ADDRESS_MODAL',
       payload: true,
     });
   };
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    userDispatch({ type: "USER_PROFILE_TAB", payload: "" });
+    userDispatch({ type: 'USER_PROFILE_TAB', payload: '' });
   }, []);
   useEffect(() => {
-    getOrdersHandler(tokenVal, userDispatch);
-    getAddressesHandler(tokenVal, userDispatch);
+    getOrdersHandler(userDispatch);
+    getAddressesHandler(userDispatch);
   }, []);
 
   return (
@@ -51,27 +50,21 @@ const Profile = () => {
       <div className="user-container">
         <div className="user-box">
           <div className="tabs">
-            <h2
-              className={tab === "profile" ? "tab-active" : ""}
-              onClick={() => setTab("profile")}
-            >
+            <h2 className={tab === 'profile' ? 'tab-active' : ''} onClick={() => setTab('profile')}>
               Profile
             </h2>
             <h2
-              className={tab === "addresses" ? "tab-active" : ""}
-              onClick={() => setTab("addresses")}
+              className={tab === 'addresses' ? 'tab-active' : ''}
+              onClick={() => setTab('addresses')}
             >
               Addresses
             </h2>
-            <h2
-              className={tab === "orders" ? "tab-active" : ""}
-              onClick={() => setTab("orders")}
-            >
+            <h2 className={tab === 'orders' ? 'tab-active' : ''} onClick={() => setTab('orders')}>
               Orders
             </h2>
           </div>
           <div className="tab-details">
-            {tab === "profile" && (
+            {tab === 'profile' && (
               <>
                 <h4>
                   Name: {currentUser.firstName}&nbsp;&nbsp;
@@ -80,18 +73,18 @@ const Profile = () => {
                 <h4>Email: {currentUser.email}</h4>
                 <h4>
                   Cart Items : {userState.cart.length} Item
-                  {userState.cart.length > 1 ? "(s)" : ""}
+                  {userState.cart.length > 1 ? '(s)' : ''}
                 </h4>
                 <h4>
                   Wishlist Items : {userState.wishlist.length} Item
-                  {userState.wishlist.length > 1 ? "(s)" : ""}
+                  {userState.wishlist.length > 1 ? '(s)' : ''}
                 </h4>
                 <div className="btn">
                   <button onClick={() => signOutHandler()}>Logout</button>
                 </div>
               </>
             )}
-            {tab === "addresses" && (
+            {tab === 'addresses' && (
               <>
                 {userState.addresses ? (
                   <div className="address-list">
@@ -105,16 +98,10 @@ const Profile = () => {
                         <p className="address-line">{item.country}</p>
                         <p className="mobile-no">Mobile: {item.mobile}</p>
                         <div className="address-action-btns">
-                          <button onClick={() => updateAddress(item)}>
-                            Edit
-                          </button>
+                          <button onClick={() => updateAddress(item)}>Edit</button>
                           <button
                             onClick={() => {
-                              removeAddressHandler(
-                                item._id,
-                                tokenVal,
-                                userDispatch
-                              );
+                              removeAddressHandler(item._id, userDispatch);
                             }}
                           >
                             Remove
@@ -132,7 +119,7 @@ const Profile = () => {
               </>
             )}
 
-            {tab === "orders" &&
+            {tab === 'orders' &&
               (userState.orders.length > 0 ? (
                 <>
                   <div className="order-list">
@@ -152,10 +139,7 @@ const Profile = () => {
                           <div className="order-product-list">
                             {order.orderedProducts.map((product) => {
                               return (
-                                <div
-                                  className="order-product-card"
-                                  key={product._id}
-                                >
+                                <div className="order-product-card" key={product._id}>
                                   <img src={product.photoUrl} alt="product" />
                                   <div className="product-details">
                                     <div>{product.title}</div>
@@ -170,23 +154,15 @@ const Profile = () => {
                           {order.deliveryAddress && (
                             <div className="order-address">
                               <h3>Order Address</h3>
-                              <div
-                                className="address-card"
-                                key={order.deliveryAddress._id}
-                              >
-                                <div className="name">
-                                  {order.deliveryAddress.name}
-                                </div>
+                              <div className="address-card" key={order.deliveryAddress._id}>
+                                <div className="name">{order.deliveryAddress.name}</div>
                                 <div className="address-line">
-                                  {order.deliveryAddress.street},{" "}
-                                  {order.deliveryAddress.city},{" "}
-                                  {order.deliveryAddress.state},{" "}
-                                  {order.deliveryAddress.country},{" "}
+                                  {order.deliveryAddress.street}, {order.deliveryAddress.city},{' '}
+                                  {order.deliveryAddress.state}, {order.deliveryAddress.country},{' '}
                                   {order.deliveryAddress.zipCode}
                                 </div>
                                 <div className="mobile-no">
-                                  <span>Mobile No:</span>{" "}
-                                  {order.deliveryAddress.mobile}
+                                  <span>Mobile No:</span> {order.deliveryAddress.mobile}
                                 </div>
                               </div>
                             </div>

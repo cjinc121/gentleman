@@ -28,7 +28,7 @@ export const SingleProduct = () => {
   useEffect(() => {
     (async () => {
       try {
-        const productResponse = await axios.get(`/api/products/${productId}`);
+        const productResponse = await axios.get(`http://localhost:3001/api/products/${productId}`);
         setSingleProduct(productResponse.data.product);
       } catch (err) {
         console.log(err);

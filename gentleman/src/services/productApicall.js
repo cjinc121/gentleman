@@ -2,12 +2,10 @@ import axios from "axios";
 
 //get Wishlist
 
-export const getAllWishlistService = async (userState) => {
+export const getAllWishlistService = async () => {
   try {
-    const res = await axios.get("/api/user/wishlist", {
-      headers: {
-        authorization: userState.tokenVal,
-      },
+    const res = await axios.get('http://localhost:3001/api/user/wishlist', {
+      withCredentials: true,
     });
     return res;
   } catch (error) {
@@ -16,18 +14,14 @@ export const getAllWishlistService = async (userState) => {
 };
 //add Wishlist
 
-export const addToWishlistService = async (product, userState) => {
+export const addToWishlistService = async (product) => {
   try {
     const res = await axios.post(
-      "/api/user/wishlist",
+      'http://localhost:3001/api/user/wishlist',
       {
         product: product,
       },
-      {
-        headers: {
-          authorization: userState.tokenVal,
-        },
-      }
+      { withCredentials: true }
     );
     return res;
   } catch (error) {
@@ -35,12 +29,10 @@ export const addToWishlistService = async (product, userState) => {
   }
 };
 //delete from wishlist
-export const deleteFromWishlistService = async (_id, userState) => {
+export const deleteFromWishlistService = async (_id) => {
   try {
-    const res = await axios.delete(`/api/user/wishlist/${_id}`, {
-      headers: {
-        authorization: userState.tokenVal,
-      },
+    const res = await axios.delete(`http://localhost:3001/api/user/wishlist/${_id}`, {
+      withCredentials: true,
     });
 
     return res;
@@ -49,31 +41,23 @@ export const deleteFromWishlistService = async (_id, userState) => {
   }
 };
 //get cart
-export const getAllCartService = async (userState) => {
+export const getAllCartService = async () => {
   try {
-    const res = await axios.get("/api/user/cart", {
-      headers: {
-        authorization: userState.tokenVal,
-      },
-    });
+    const res = await axios.get('http://localhost:3001/api/user/cart', { withCredentials: true });
     return res;
   } catch (error) {
     console.log(error);
   }
 };
 //add to cart
-export const addToCartService = async (product, userState) => {
+export const addToCartService = async (product) => {
   try {
     const res = await axios.post(
-      "/api/user/cart",
+      'http://localhost:3001/api/user/cart',
       {
         product,
       },
-      {
-        headers: {
-          authorization: userState.tokenVal,
-        },
-      }
+      { withCredentials: true }
     );
     return res;
   } catch (error) {
@@ -81,12 +65,10 @@ export const addToCartService = async (product, userState) => {
   }
 };
 //delete from cart
-export const deleteFromCartService = async (_id, userState) => {
+export const deleteFromCartService = async (_id) => {
   try {
-    const res = await axios.delete(`/api/user/cart/${_id}`, {
-      headers: {
-        authorization: userState.tokenVal,
-      },
+    const res = await axios.delete(`http://localhost:3001/api/user/cart/${_id}`, {
+      withCredentials: true,
     });
     return res;
   } catch (error) {
@@ -95,16 +77,16 @@ export const deleteFromCartService = async (_id, userState) => {
 };
 //increase quantity
 
-export const increaseQuantityCartService = async (_id, userState) => {
+export const increaseQuantityCartService = async (_id) => {
   try {
     const data = await axios.post(
-      `/api/user/cart/${_id}`,
+      `http://localhost:3001/api/user/cart/${_id}`,
       {
         action: {
-          type: "increment",
+          type: 'increment',
         },
       },
-      { headers: { authorization: userState.tokenVal } }
+      { withCredentials: true }
     );
     return data;
   } catch (error) {
@@ -112,16 +94,16 @@ export const increaseQuantityCartService = async (_id, userState) => {
   }
 };
 //decrease quantity
-export const decreaseQuantityCartService = async (_id, userState) => {
+export const decreaseQuantityCartService = async (_id) => {
   try {
     const res = await axios.post(
-      `/api/user/cart/${_id}`,
+      `http://localhost:3001/api/user/cart/${_id}`,
       {
         action: {
-          type: "decrement",
+          type: 'decrement',
         },
       },
-      { headers: { authorization: userState.tokenVal } }
+      { withCredentials: true }
     );
     return res;
   } catch (error) {
