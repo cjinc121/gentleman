@@ -130,8 +130,10 @@ const UserContextProvider = ({ children }) => {
     }
   };
   useEffect(() => {
-    getAllWishlistHandler();
-    getAllCartHandler();
+    if (user) {
+      getAllWishlistHandler();
+      getAllCartHandler();
+    }
   }, []);
 
   return (

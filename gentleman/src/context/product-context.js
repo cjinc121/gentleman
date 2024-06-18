@@ -1,5 +1,4 @@
 import { createContext, useContext, useReducer, useEffect } from "react";
-import axios from "axios";
 import { productReducer } from "../utils/productReducer";
 import {
   compose,
@@ -10,6 +9,8 @@ import {
   filterDataByRange,
   sortDataByPrice,
 } from "../utils/productFilter&Sort";
+import { Api } from "../utils/Api";
+import axios from "axios";
 const ProductContext = createContext();
 const useProductContext = () => useContext(ProductContext);
 const ProductContextProvider = ({ children }) => {
@@ -25,7 +26,7 @@ const ProductContextProvider = ({ children }) => {
   useEffect(() => {
     (async () => {
       try {
-        const productResponse = await axios.get("http://localhost:3001/api/products");
+        const productResponse = await axios.get(`${process.env.REACT_APP_API_URL}api/products`);
         productDispatch({
           type: "Add_Product_List",
           payload: productResponse.data.products,

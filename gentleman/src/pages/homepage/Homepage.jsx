@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useCategoryContext } from "../../context/category-context";
 import { useProductContext } from "../../context/product-context";
 import { useUserContext } from "../../context/user-context";
+import { FeaturedProductCard } from "../../components/productListing/featured-product-cart";
 const Homepage = () => {
   const { category } = useCategoryContext();
   const { productState, productDispatch } = useProductContext();
@@ -69,40 +70,7 @@ const Homepage = () => {
             userState.wishlist.map((wishItem) => {
               if (wishItem.id === item.id) b = "true";
             });
-            return (
-              <div className="card-container-vertical">
-                <img src={item.photoUrl} />
-                <div className="card-vertical-title">
-                  <h2 className="main-title">{item.title}</h2>
-                  <p className="desc">{item.description}</p>
-                  <p className="card-price">
-                    ₹{item.discountPrice}&nbsp;&nbsp; <s>₹{item.originalPrice}</s>
-                  </p>
-                  <p className="discount">
-                    {Math.round(
-                      ((item.originalPrice - item.discountPrice) * 100) / item.originalPrice
-                    )}
-                    %OFF
-                  </p>
-                  {b ? (
-                    <button className="button outline-button secondary-button">
-                      <Link to="/wishlist">Go to Wishlist</Link>
-                    </button>
-                  ) : (
-                    <button
-                      className="button contained-button black-button"
-                      onClick={() =>
-                        isUserLoggedIn
-                          ? userDispatch({ type: 'ADD_TO_WISHLIST', payload: item })
-                          : navigate('/login')
-                      }
-                    >
-                      Add to Wishlist
-                    </button>
-                  )}
-                </div>
-              </div>
-            );
+            return <FeaturedProductCard item={item} isInWishlist={b} />;
           })}
       </div>
     </div>

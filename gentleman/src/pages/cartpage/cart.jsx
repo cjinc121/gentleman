@@ -38,13 +38,13 @@ const Cart = () => {
         <div>
           <div className="cart-container">
             <div className="cart-container-card">
-              {userState.cart.map((item) => {
+              {userState.cart.map((item,index) => {
                 let b = "";
                 userState.wishlist.map((wishItem) => {
                   if (wishItem.id === item.id) b = "true";
                 });
                 return (
-                  <div className="card-container-vertical">
+                  <div className="card-container-vertical" key={index}>
                     <img
                       className="card-image"
                       src={item.photoUrl}

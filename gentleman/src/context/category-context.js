@@ -10,7 +10,7 @@ const CategoryContextProvider = ({ children }) => {
   useEffect(() => {
     (async () => {
       try {
-        const categoryResponse = await axios.get("http://localhost:3001/api/categories");
+        const categoryResponse = await axios.get(`${process.env.REACT_APP_API_URL}api/categories`);
         setCategory(categoryResponse.data.categories);
       } catch (err) {
         console.log(err);
