@@ -15,7 +15,6 @@ export const ProductCard = ({ item, isInCart, isInWishlist }) => {
     getAllWishlistHandler,
   } = useUserContext();
   const navigate = useNavigate();
-
   return (
     <div className="card-container-portrait">
       <div className="image-container">

@@ -1,12 +1,16 @@
 import { useUserContext } from "../../context/user-context";
-import { MdCancel } from "react-icons/md";
 import { GiNotebook } from "react-icons/gi";
-import { Link, useNavigate } from "react-router-dom";
 import "./wishlist.css";
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { WishlistCard } from '../../components/productListing/wishlist-card';
 const Wishlist = () => {
-  const navigate = useNavigate();
-  const { userState, deleteFromWishlistHandler, addToCartHandler } =
-    useUserContext();
+  const { userState, getAllWishlistHandler } = useUserContext();
+  useEffect(() => {
+    (async () => {
+      await getAllWishlistHandler();
+    })();
+  }, []);
   return (
     <div>
       <div className="page-header">Wishlist({userState.wishlist.length})</div>
@@ -20,40 +24,8 @@ const Wishlist = () => {
           </div>
         )}
         {userState.wishlist.map((item, index) => {
-          let a = '';
-          userState.cart.map((cartItem) => {
-            if (cartItem.id === item.id) a = 'true';
-          });
-          return (
-            <div className="card-container-item" key={index}>
-              <div className="card-img" onClick={() => navigate(`/products/${item._id}`)}>
-                <img src={item.photoUrl} />
-                <div
-                  className="tag-image-right cart-icon"
-                  onClick={() => deleteFromWishlistHandler(item._id)}
-                >
-                  <MdCancel />
-                </div>
-              </div>
-              <div className="card-title">
-                <h2 className="main-title">{item.title}</h2>
-                <p className="description">{item.categoryName}</p>
-                <h3 className="sub-title">{item.description}</h3>
-              </div>
-              {a ? (
-                <button className="button outline-button secondary-button">
-                  <Link to="/cart">Go To Cart</Link>
-                </button>
-              ) : (
-                <button
-                  className="button contained-button black-button"
-                  onClick={() => addToCartHandler(item)}
-                >
-                  Add to Cart
-                </button>
-              )}
-            </div>
-          );
+         
+          return <WishlistCard item={item}  key={index} />;
         })}
       </div>
     </div>

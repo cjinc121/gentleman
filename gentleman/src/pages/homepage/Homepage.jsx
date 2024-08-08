@@ -23,8 +23,8 @@ const Homepage = () => {
               <button
                 className="button containedbutton black-button"
                 onClick={() => {
-                  productDispatch({ type: "SET_CATEGORY", payload: "empty" });
-                  navigate("/products");
+                  productDispatch({ type: 'SET_CATEGORY', payload: 'empty' });
+                  navigate('/products');
                 }}
               >
                 Explore Now
@@ -37,16 +37,17 @@ const Homepage = () => {
       <div className="heading">Categories</div>
 
       <div className="category-container">
-        {category.map((item) => {
+        {category.map((item, index) => {
           return (
             <div
+                key={index}
               className="category-card"
               onClick={() => {
                 productDispatch({
-                  type: "SET_CATEGORY",
+                  type: 'SET_CATEGORY',
                   payload: item.categoryName,
                 });
-                navigate("/products");
+                navigate('/products');
               }}
             >
               <div className="top-image">
@@ -65,12 +66,12 @@ const Homepage = () => {
       <div className="featured-container">
         {productState.product
           .filter((item) => item.featuredProduct)
-          .map((item) => {
-            let b = "";
+          .map((item, index) => {
+            let b = '';
             userState.wishlist.map((wishItem) => {
-              if (wishItem.id === item.id) b = "true";
+              if (wishItem.id === item.id) b = 'true';
             });
-            return <FeaturedProductCard item={item} isInWishlist={b} />;
+            return <FeaturedProductCard key={index} item={item} isInWishlist={b} />;
           })}
       </div>
     </div>

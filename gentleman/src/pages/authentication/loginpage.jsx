@@ -9,8 +9,8 @@ const Login = () => {
     password: "",
   });
   const guestUser = {
-    email: "aman.cjinc@gmail.com",
-    password: "123456789",
+    email: 'aman.cjinc@gmail.com',
+    password: '1234566',
   };
   return (
     <div>

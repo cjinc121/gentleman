@@ -4,7 +4,7 @@ import { useUserContext } from '../../context/user-context';
 
 export const FeaturedProductCard = ({ item, isInWishlist }) => {
   const [isWishlist, setIsWishlist] = useState(isInWishlist);
-  const { userState, userDispatch } = useUserContext();
+  const { userState, userDispatch, addToWishlistHandler } = useUserContext();
   const navigate = useNavigate();
   const { isUserLoggedIn } = userState;
   return (
@@ -27,9 +27,9 @@ export const FeaturedProductCard = ({ item, isInWishlist }) => {
         ) : (
           <button
             className="button contained-button black-button"
-            onClick={() => {
+            onClick={async () => {
               if (isUserLoggedIn) {
-                userDispatch({ type: 'ADD_TO_WISHLIST', payload: item });
+                await addToWishlistHandler(item);
                 setIsWishlist(true);
               } else navigate('/login');
             }}

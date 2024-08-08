@@ -16,17 +16,15 @@ import {
   getAllWishlistService,
   increaseQuantityCartService,
 } from '../services/productApicall';
-import { useCookies } from 'react-cookie';
 
 const UserContext = createContext();
 const useUserContext = () => useContext(UserContext);
 const user = JSON.parse(localStorage.getItem('user'));
 
 const UserContextProvider = ({ children }) => {
-  const [cookies, setCookie] = useCookies(['token']);
-  console.log('cook', cookies.token);
+
   const [userState, userDispatch] = useReducer(userReducer, {
-    isUserLoggedIn: cookies.token ? true : false,
+    isUserLoggedIn: localStorage.getItem('user') ? true : false,
     userData: user,
     cart: [],
     wishlist: [],
@@ -94,7 +92,7 @@ const UserContextProvider = ({ children }) => {
   };
   const addToCartHandler = async (product) => {
     const { data, status } = await addToCartService(product);
-    if (status === 201) {
+    if (status === 200) {
       userDispatch({
         type: 'ADD_TO_CART',
         payload: data.cart,
@@ -113,7 +111,7 @@ const UserContextProvider = ({ children }) => {
   const increaseQuantityCartHandler = async (_id) => {
     const { data, status } = await increaseQuantityCartService(_id);
     console.log(data.cart);
-    if (status === 200) {
+    if (status === 201) {
       userDispatch({
         type: 'UPDATE_CART',
         payload: data.cart,
@@ -122,7 +120,7 @@ const UserContextProvider = ({ children }) => {
   };
   const decreaseQuantityCartHandler = async (_id) => {
     const { data, status } = await decreaseQuantityCartService(_id);
-    if (status === 200) {
+    if (status === 201) {
       userDispatch({
         type: 'UPDATE_CART',
         payload: data.cart,

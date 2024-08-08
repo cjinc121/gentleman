@@ -9,6 +9,7 @@ import { IoFlash } from "react-icons/io5";
 import { GrCheckboxSelected } from "react-icons/gr";
 import { AiOutlineStar } from "react-icons/ai";
 import "./SingleProduct.css";
+import axios from "axios";
 
 export const SingleProduct = () => {
   const { productId } = useParams();
@@ -27,7 +28,7 @@ export const SingleProduct = () => {
   useEffect(() => {
     (async () => {
       try {
-        const productResponse = await axios.get(
+        const productResponse = await  axios.get(
           `${process.env.REACT_APP_API_URL}api/products/${productId}`
         );
         setSingleProduct(productResponse.data.product);
@@ -50,7 +51,7 @@ export const SingleProduct = () => {
               <h2 className="">{singleProduct.title}</h2>
               <p className="description">{singleProduct.description}</p>
             </div>
-            <div class=" rating-container-item rating-tag ">
+            <div className=" rating-container-item rating-tag ">
               {singleProduct.rating}
               <AiOutlineStar />
             </div>
